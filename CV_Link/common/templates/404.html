@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    Barberbook 404 Page
+{% endblock %}
+
+{% block content %}
+    <div>
+        <div class="main-container">
+            <button><a href="{% url 'home-page' %}">Back to Home</a></button>
+            <h1>Oops, no such page found</h1>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Chivo+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import 'https://use.fontawesome.com/releases/v5.10.2/css/all.css';
+@import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css';
+
+:root {
+	--button-brown: #370511;
+}
+
+/* -----Resets----- */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, figure, blockquote, dl, dd {
+	margin: 0;
+}
+
+ul[role='list'], ol[role='list'] {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+/* -----Styling----- */
+body {
+	font-family: 'Arial', sans-serif;
+	color: #14233e;
+	line-height: 1.5;
+}
+
+main {
+	padding: 1rem;
+	background: #ecedef;
+	min-height: 100vh;
+}
+
+header {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+	background: rgb(25,44,79);
+    color: white;
+	font-size: 1.25rem;
+	font-weight: 600;
+    padding: 0.5rem 2rem;
+}
+.home-logo {
+	display: flex;
+}
+.home-logo-picture {
+	height: 40px;
+}
+.home-logo a {
+	height: 40px;
+}
+.header-nav-links ul {
+	display: flex;
+	flex-direction: row;
+	gap: 32px;
+}
+
+footer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background: rgb(25,44,79);
+    color: white;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem
+}
+
+footer a {
+    color: white;
+}
+.main-footer-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0rem 1rem;
+}
+.footer-section {
+    text-align: center;
+    font-size: 0.7rem;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+a:hover {
+    color: lightskyblue;
+}
+

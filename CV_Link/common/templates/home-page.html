@@ -1,11 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>HOme page</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    CV LInk Home Page
+{% endblock %}
+
+{% block content %}
+
     <h1>Home Page, {{ request.user }}</h1>
 
-</body>
-</html>
+
+{% endblock %}
