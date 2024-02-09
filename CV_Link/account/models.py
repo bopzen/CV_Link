@@ -7,6 +7,7 @@ class AccountUser(AbstractBaseUser, PermissionsMixin):
     ROLES = (
         ('Talent', 'Talent'),
         ('Recruiter', 'Recruiter'),
+        ('Staff', 'Staff')
     )
 
     username = models.CharField(
@@ -37,5 +38,5 @@ class AccountUser(AbstractBaseUser, PermissionsMixin):
     REQUIRED_FIELDS = ['email']
 
     def __str__(self):
-        return f"Username: {self.username}, Email: {self.email}"
+        return self.username
 
