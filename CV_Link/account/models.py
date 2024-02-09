@@ -9,12 +9,27 @@ class AccountUser(AbstractBaseUser, PermissionsMixin):
         ('Recruiter', 'Recruiter'),
     )
 
-    username = models.CharField(max_length=150, unique=True)
-    email = models.EmailField(max_length=255, unique=True, blank=True, null=True)
-    account_type = models.CharField(max_length=20, choices=ROLES)
-    is_active = models.BooleanField(default=True)
-    is_staff = models.BooleanField(default=False)
-    date_joined = models.DateTimeField(auto_now_add=True)
+    username = models.CharField(
+        max_length=150,
+        unique=True,
+    )
+    email = models.EmailField(
+        max_length=255,
+        unique=True,
+    )
+    account_type = models.CharField(
+        max_length=20,
+        choices=ROLES,
+    )
+    is_active = models.BooleanField(
+        default=True,
+    )
+    is_staff = models.BooleanField(
+        default=False,
+    )
+    date_joined = models.DateTimeField(
+        auto_now_add=True,
+    )
 
     objects = CustomUserManager()
 
