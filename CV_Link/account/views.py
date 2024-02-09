@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import generic
 from django.contrib.auth import views as auth_views, get_user_model, login
@@ -17,3 +17,14 @@ class AccountRegisterView(generic.CreateView):
         result = super().form_valid(form)
         login(self.request, self.object)
         return result
+
+
+class AccountLoginView(auth_views.LoginView):
+    template_name = 'account-login.html'
+    success_url = reverse_lazy('home-page')
+
+
+class AccountLogoutView(auth_views.LogoutView):
+    template_name = 'account-logout.html'
+    next_page = reverse_lazy('login-page')
+
