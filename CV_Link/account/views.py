@@ -24,7 +24,10 @@ class AccountLoginView(auth_views.LoginView):
     success_url = reverse_lazy('home-page')
 
 
-class AccountLogoutView(auth_views.LogoutView):
+class AccountLogoutPageView(generic.TemplateView):
     template_name = 'account-logout.html'
-    next_page = reverse_lazy('login-page')
+
+
+class AccountLogoutView(auth_views.LogoutView):
+    template_name = 'account-logout-confirmation.html'
 
