@@ -2,6 +2,7 @@ from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views import generic
 from django.contrib.auth import views as auth_views, get_user_model, login
+from django.contrib.auth import mixins as auth_mixins
 
 from CV_Link.account.forms import RegisterAccountForm
 
@@ -48,3 +49,12 @@ class AccountDeleteView(generic.DeleteView):
             return redirect('home-page')
 
         return super().delete(request, *args, **kwargs)
+
+
+class AccountPasswordChangeView(auth_mixins.LoginRequiredMixin, auth_views.PasswordChangeView):
+    template_name = 'account-change-password.html'
+    success_url = reverse_lazy('change-password-confirmation')
+
+
+class AccountPasswordChangeConfirmView(auth_mixins.LoginRequiredMixin, auth_views.PasswordChangeDoneView):
+    template_name = 'account-change-password-confirmation.html'
