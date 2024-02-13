@@ -1,5 +1,6 @@
 from django.urls import path, include
-from CV_Link.account.views import AccountRegisterView, AccountLoginView, AccountLogoutView, AccountLogoutPageView
+from CV_Link.account.views import AccountRegisterView, AccountLoginView, AccountLogoutView, AccountLogoutPageView, \
+    AccountDeleteView
 
 urlpatterns = [
     path('register/', AccountRegisterView.as_view(), name='register-page'),
@@ -8,4 +9,5 @@ urlpatterns = [
         path('', AccountLogoutPageView.as_view(), name='logout-page'),
         path('confirm', AccountLogoutView.as_view(), name='logout-confirmation'),
     ])),
+    path('delete/', AccountDeleteView.as_view(), name='delete-page')
 ]

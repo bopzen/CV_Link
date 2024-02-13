@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views import generic
 from django.contrib.auth import views as auth_views, get_user_model, login
@@ -21,7 +21,9 @@ class AccountRegisterView(generic.CreateView):
 
 class AccountLoginView(auth_views.LoginView):
     template_name = 'account-login.html'
-    success_url = reverse_lazy('home-page')
+
+    def get_success_url(self):
+        return reverse_lazy('home-page')
 
 
 class AccountLogoutPageView(generic.TemplateView):
@@ -31,3 +33,18 @@ class AccountLogoutPageView(generic.TemplateView):
 class AccountLogoutView(auth_views.LogoutView):
     template_name = 'account-logout-confirmation.html'
 
+
+class AccountDeleteView(generic.DeleteView):
+    model = UserModel
+    template_name = 'account-delete.html'
+    success_url = reverse_lazy('home-page')
+
+    def get_object(self, queryset=None):
+        return self.request.user
+
+    def delete(self, request, *args, **kwargs):
+        user = self.get_object()
+        if request.user != user:
+            return redirect('home-page')
+
+        return super().delete(request, *args, **kwargs)
