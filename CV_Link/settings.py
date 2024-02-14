@@ -22,6 +22,8 @@ INSTALLED_APPS = [
 
     'CV_Link.account',
     'CV_Link.common',
+    'CV_Link.profile_talent',
+    'CV_Link.profile_recruiter'
 ]
 
 MIDDLEWARE = [
