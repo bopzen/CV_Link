@@ -25,3 +25,40 @@ class RecruiterProfile(models.Model):
 
     def __str__(self):
         return f'{self.company_name}'
+
+
+class Address(models.Model):
+    address_line1 = models.CharField(
+        max_length=200,
+        null=True,
+        blank=True,
+    )
+    address_line2 = models.CharField(
+        max_length=200,
+        null=True,
+        blank=True,
+    )
+    city = models.CharField(
+        max_length=50,
+        null=True,
+        blank=True,
+    )
+    postal_code = models.CharField(
+        max_length=50,
+        null=True,
+        blank=True,
+    )
+    country = models.CharField(
+        max_length=100,
+        null=True,
+        blank=True,
+    )
+
+    recruiter = models.ForeignKey(
+        RecruiterProfile,
+        on_delete=models.CASCADE,
+    )
+
+    def __str__(self):
+        return f'{self.city} {self.postal_code}'
+
