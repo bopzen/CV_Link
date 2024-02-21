@@ -25,6 +25,11 @@ class TalentProfile(models.Model):
         null=True,
         blank=True,
     )
+    introduction = models.TextField(
+        max_length=300,
+        null=True,
+        blank=True,
+    )
     user = models.OneToOneField(
         UserModel,
         on_delete=models.CASCADE,
@@ -33,3 +38,56 @@ class TalentProfile(models.Model):
 
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
+
+
+class Education(models.Model):
+    institution = models.CharField(
+        max_length=200,
+    )
+    field_of_study = models.CharField(
+        max_length=200,
+    )
+    city = models.CharField(
+        max_length=50,
+    )
+    country = models.CharField(
+        max_length=100,
+    )
+    description = models.TextField(
+        max_length=300,
+    )
+    start_date = models.DateField()
+    end_date = models.DateField()
+
+    talent = models.ForeignKey(
+        TalentProfile,
+        on_delete=models.CASCADE,
+    )
+
+
+class WorkExperience(models.Model):
+    company = models.CharField(
+        max_length=200,
+    )
+    sector = models.CharField(
+        max_length=200,
+    )
+    position = models.CharField(
+        max_length=200,
+    )
+    city = models.CharField(
+        max_length=50,
+    )
+    country = models.CharField(
+        max_length=100,
+    )
+    description = models.TextField(
+        max_length=300,
+    )
+    start_date = models.DateField()
+    end_date = models.DateField()
+
+    talent = models.ForeignKey(
+        TalentProfile,
+        on_delete=models.CASCADE,
+    )

@@ -53,7 +53,7 @@ class Address(models.Model):
         null=True,
         blank=True,
     )
-    recruiter = models.ForeignKey(
+    recruiter = models.OneToOneField(
         RecruiterProfile,
         on_delete=models.CASCADE,
     )
@@ -72,7 +72,7 @@ class Contacts(models.Model):
     facebook_profile = models.URLField()
     instagram_profile = models.URLField()
     twitter_profile = models.URLField()
-    recruiter = models.ForeignKey(
+    recruiter = models.OneToOneField(
         RecruiterProfile,
         on_delete=models.CASCADE,
     )
