@@ -28,6 +28,9 @@ class RecruiterProfile(models.Model):
 
 
 class Address(models.Model):
+    class Meta:
+        verbose_name_plural = 'Addresses'
+
     address_line1 = models.CharField(
         max_length=200,
         null=True,
@@ -63,6 +66,9 @@ class Address(models.Model):
 
 
 class Contacts(models.Model):
+    class Meta:
+        verbose_name_plural = 'Contacts'
+
     phone = models.CharField(
         max_length=12,
         null=True,
