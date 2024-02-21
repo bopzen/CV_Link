@@ -53,7 +53,6 @@ class Address(models.Model):
         null=True,
         blank=True,
     )
-
     recruiter = models.ForeignKey(
         RecruiterProfile,
         on_delete=models.CASCADE,
@@ -62,3 +61,21 @@ class Address(models.Model):
     def __str__(self):
         return f'{self.city} {self.postal_code}'
 
+
+class Contacts(models.Model):
+    phone = models.CharField(
+        max_length=12,
+        null=True,
+        blank=True,
+    )
+    linkedin_profile = models.URLField()
+    facebook_profile = models.URLField()
+    instagram_profile = models.URLField()
+    twitter_profile = models.URLField()
+    recruiter = models.ForeignKey(
+        RecruiterProfile,
+        on_delete=models.CASCADE,
+    )
+
+    def __str__(self):
+        return f'{self.phone}'
