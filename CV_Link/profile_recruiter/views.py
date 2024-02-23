@@ -4,7 +4,7 @@ from django.contrib.auth import mixins as auth_mixins
 from CV_Link.profile_recruiter.models import RecruiterProfile
 
 
-class RecruiterDashboardPageView(auth_mixins.LoginRequiredMixin, generic.DetailView):
+class RecruiterDashboardView(auth_mixins.LoginRequiredMixin, generic.DetailView):
     model = RecruiterProfile
     template_name = 'recruiter-profile-dashboard.html'
     context_object_name = 'recruiter_profile'

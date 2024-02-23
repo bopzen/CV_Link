@@ -35,7 +35,7 @@ class AccountLogoutView(auth_views.LogoutView):
     template_name = 'account-logout-confirmation.html'
 
 
-class AccountDeleteView(generic.DeleteView):
+class AccountDeleteView(auth_mixins.LoginRequiredMixin, generic.DeleteView):
     model = UserModel
     template_name = 'account-delete.html'
     success_url = reverse_lazy('home-page')

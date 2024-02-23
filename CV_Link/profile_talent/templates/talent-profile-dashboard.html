@@ -10,5 +10,55 @@
     <h1>Talent Dashboard</h1>
     <h2>Welcome, {{ request.user }}</h2>
 
+    <section class="dashboard-layout">
 
+        <div class="profile-info">
+            <h4>First Name:</h4>
+            {% if talent_profile.first_name %}
+                <p>{{ talent_profile.first_name }}</p>
+            {% else %}
+                <p>Please fill your first name</p>
+            {% endif %}
+
+            <h4>Last Name:</h4>
+            {% if talent_profile.last_name %}
+                <p>{{ talent_profile.last_name }}</p>
+            {% else %}
+                <p>Please fill your last name</p>
+            {% endif %}
+
+            <h4>Birth Date:</h4>
+            {% if talent_profile.birth_date %}
+                <p>{{ talent_profile.birth_date }}</p>
+            {% else %}
+                <p>Please fill your birth date</p>
+            {% endif %}
+
+            <h4>City:</h4>
+            {% if talent_profile.city %}
+                <p>{{ talent_profile.city }}</p>
+            {% else %}
+                <p>Please fill your city</p>
+            {% endif %}
+
+            <h4>Introduction:</h4>
+            {% if talent_profile.introduction %}
+                <p>{{ talent_profile.introduction }}</p>
+            {% else %}
+                <p>Please fill your introduction</p>
+            {% endif %}
+
+            <h4>Email</h4>
+            <p>{{ request.user.email }}</p>
+
+        </div>
+
+        <div class="profile-edit">
+            <ul role="list">
+                <li><a href="{% url 'change-password-page' %}">Change Password</a></li>
+                <li><a href="{% url 'delete-page' %}">Delete Account</a></li>
+            </ul>
+        </div>
+
+    </section>
 {% endblock %}

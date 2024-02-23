@@ -1,7 +1,7 @@
 from django.urls import path
 
-from CV_Link.profile_recruiter.views import RecruiterDashboardPageView
+from CV_Link.profile_recruiter.views import RecruiterDashboardView
 
 urlpatterns = [
-    path('dashboard/', RecruiterDashboardPageView.as_view(), name='recruiter-dashboard')
+    path('dashboard/', RecruiterDashboardView.as_view(), name='recruiter-dashboard')
 ]

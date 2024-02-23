@@ -106,3 +106,8 @@ a:hover {
     color: lightskyblue;
 }
 
+.dashboard-layout {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
