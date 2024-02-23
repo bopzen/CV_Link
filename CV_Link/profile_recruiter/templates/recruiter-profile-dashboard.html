@@ -10,5 +10,61 @@
     <h1>Recruiter Dashboard</h1>
     <h2>Welcome, {{ request.user }}</h2>
 
+    <h4>Company Name:</h4>
+    {% if recruiter_profile.company_name %}
+        <p>{{ recruiter_profile.company_name }}</p>
+    {% else %}
+        <p>Please fill your info</p>
+    {% endif %}
+
+    <h4>Company Description:</h4>
+    {% if recruiter_profile.company_description %}
+        <p>{{ recruiter_profile.company_description }}</p>
+    {% else %}
+        <p>Please fill your info</p>
+    {% endif %}
+
+    <h4>Company Website:</h4>
+    {% if recruiter_profile.company_website %}
+        <p>{{ recruiter_profile.company_website }}</p>
+    {% else %}
+        <p>Please fill your info</p>
+    {% endif %}
+
+    <h4>Company Address:</h4>
+    {% if recruiter_profile.address.address_line1 %}
+        <p>{{ recruiter_profile.address.address_line1 }}</p>
+    {% else %}
+        <p>Please fill your street/district</p>
+    {% endif %}
+    {% if recruiter_profile.address.address_line2 %}
+        <p>{{ recruiter_profile.address.address_line2 }}</p>
+    {% endif %}
+    {% if recruiter_profile.address.city %}
+        <p>{{ recruiter_profile.address.city }}</p>
+    {% else %}
+        <p>Please fill your city</p>
+    {% endif %}
+    {% if recruiter_profile.address.postal_code %}
+        <p>{{ recruiter_profile.address.postal_code }}</p>
+    {% else %}
+        <p>Please fill your postal code</p>
+    {% endif %}
+    {% if recruiter_profile.address.country %}
+        <p>{{ recruiter_profile.address.country }}</p>
+    {% else %}
+        <p>Please fill your country</p>
+    {% endif %}
+
+    <h4>Email</h4>
+    <p>{{ request.user.email }}</p>
+    <h4>Phone</h4>
+    <p>{{ recruiter_profile.contacts.phone }}</p>
+    <h>Social Media</h>
+    <p>{{ recruiter_profile.contacts.linkedin_profile }}</p>
+    <p>{{ recruiter_profile.contacts.facebook_profile }}</p>
+    <p>{{ recruiter_profile.contacts.linkedin_profile }}</p>
+    <p>{{ recruiter_profile.contacts.instagram_profile }}</p>
+    <p>{{ recruiter_profile.contacts.twitter_profile }}</p>
 
 {% endblock %}
