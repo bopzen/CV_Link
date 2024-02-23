@@ -1,3 +1,5 @@
-from django.shortcuts import render
+from django.views import generic
 
-# Create your views here.
+
+class TalentDashboardPageView(generic.TemplateView):
+    template_name = 'talent-profile-dashboard.html'

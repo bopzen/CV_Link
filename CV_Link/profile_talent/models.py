@@ -41,6 +41,9 @@ class TalentProfile(models.Model):
 
 
 class Education(models.Model):
+    class Meta:
+        verbose_name_plural = 'Education'
+
     institution = models.CharField(
         max_length=200,
     )
@@ -66,6 +69,9 @@ class Education(models.Model):
 
 
 class WorkExperience(models.Model):
+    class Meta:
+        verbose_name_plural = 'Work Experience'
+
     company = models.CharField(
         max_length=200,
     )

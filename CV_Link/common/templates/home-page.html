@@ -7,7 +7,16 @@
 
 {% block content %}
 
-    <h1>Home Page, {{ request.user }}</h1>
+    <h1>Home Page, {{ request.user }} {{ request.user.account_type }}</h1>
+
+    {% if request.user %}
+        {% if request.user.account_type == 'Talent' %}
+            <h2><a href="{% url 'talent-dashboard' %}">Talent Dashboard</a></h2>
+        {% elif request.user.account_type == 'Recruiter'%}
+            <h2><a href="{% url 'recruiter-dashboard' %}">Recruiter Dashboard</a></h2>
+        {% endif %}
+
+    {% endif %}
 
 
 {% endblock %}

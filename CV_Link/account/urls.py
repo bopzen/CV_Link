@@ -8,12 +8,12 @@ urlpatterns = [
     path('logout/',
          include([
             path('', AccountLogoutPageView.as_view(), name='logout-page'),
-            path('confirm', AccountLogoutView.as_view(), name='logout-confirmation'),
+            path('confirm', AccountLogoutView.as_view(), name='logout-confirmation-page'),
             ])),
     path('delete/', AccountDeleteView.as_view(), name='delete-page'),
     path('change-password/',
          include([
             path('', AccountPasswordChangeView.as_view(), name='change-password-page'),
-            path('confirm', AccountPasswordChangeConfirmView.as_view(), name='change-password-confirmation'),
+            path('confirm', AccountPasswordChangeConfirmView.as_view(), name='change-password-confirmation-page'),
             ])),
     ]

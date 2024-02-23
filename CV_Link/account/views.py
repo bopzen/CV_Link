@@ -53,7 +53,7 @@ class AccountDeleteView(generic.DeleteView):
 
 class AccountPasswordChangeView(auth_mixins.LoginRequiredMixin, auth_views.PasswordChangeView):
     template_name = 'account-change-password.html'
-    success_url = reverse_lazy('change-password-confirmation')
+    success_url = reverse_lazy('change-password-confirmation-page')
 
 
 class AccountPasswordChangeConfirmView(auth_mixins.LoginRequiredMixin, auth_views.PasswordChangeDoneView):
