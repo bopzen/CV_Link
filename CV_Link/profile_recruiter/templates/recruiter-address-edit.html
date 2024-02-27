@@ -9,11 +9,11 @@
 
     <h1>Edit Profile</h1>
     <h2>{{ request.user }}</h2>
-     <form action="{% url 'recruiter-edit-profile' %}" method="post">
+     <form action="{% url 'recruiter-edit-address' pk=recruiter.pk %}" method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <div class="form-buttons">
-            <button>Edit Profile</button>
+            <button>Edit Address</button>
             <button type="button"><a href="{% url 'recruiter-dashboard' %}">Cancel</a></button>
         </div>
     </form>
