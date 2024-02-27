@@ -1,19 +1,19 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>{% extends 'base.html' %}
 {% load static %}
 
 {% block title %}
-    CV Link Edit Address Page
+    CV Link Add Contacts Page
 {% endblock %}
 
 {% block content %}
 
-    <h1>Edit Address</h1>
+    <h1>Add Contacts</h1>
     <h2>{{ request.user }}</h2>
-     <form action="{% url 'recruiter-edit-address' pk=recruiter.pk %}" method="post">
+     <form action="{% url 'recruiter-create-contacts' pk=recruiter.pk %}" method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <div class="form-buttons">
-            <button>Edit Address</button>
+            <button>Add Contacts</button>
             <button type="button"><a href="{% url 'recruiter-dashboard' %}">Cancel</a></button>
         </div>
     </form>

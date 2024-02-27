@@ -10,7 +10,15 @@
     <h1>Delete Account</h1>
     <form method="post">
         {% csrf_token %}
-        <button type="submit">Delete</button>
+        <div class="form-buttons">
+            <button>Delete Account</button>
+            {% if request.user.account_type == 'Talent' %}
+                <button type="button"><a href="{% url 'talent-dashboard' %}">Cancel</a></button>
+            {% elif request.user.account_type == 'Recruiter'%}
+                <button type="button"><a href="{% url 'recruiter-dashboard' %}">Cancel</a></button>
+            {% endif %}
+        </div>
+
     </form>
 
 

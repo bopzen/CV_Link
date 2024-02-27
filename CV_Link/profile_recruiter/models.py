@@ -74,10 +74,22 @@ class Contacts(models.Model):
         null=True,
         blank=True,
     )
-    linkedin_profile = models.URLField()
-    facebook_profile = models.URLField()
-    instagram_profile = models.URLField()
-    twitter_profile = models.URLField()
+    linkedin_profile = models.URLField(
+        null=True,
+        blank=True,
+    )
+    facebook_profile = models.URLField(
+        null=True,
+        blank=True,
+    )
+    instagram_profile = models.URLField(
+        null=True,
+        blank=True,
+    )
+    twitter_profile = models.URLField(
+        null=True,
+        blank=True,
+    )
     recruiter = models.OneToOneField(
         RecruiterProfile,
         on_delete=models.CASCADE,

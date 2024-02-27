@@ -2,12 +2,12 @@
 {% load static %}
 
 {% block title %}
-    CV Link Create Address Page
+    CV Link Add Address Page
 {% endblock %}
 
 {% block content %}
 
-    <h1>Edit Profile</h1>
+    <h1>Add Address</h1>
     <h2>{{ request.user }}</h2>
      <form action="{% url 'recruiter-create-address' pk=recruiter.pk %}" method="post">
         {% csrf_token %}

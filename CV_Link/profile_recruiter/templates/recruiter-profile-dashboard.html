@@ -79,6 +79,11 @@
                 {% else %}
                     <li><a href="{% url 'recruiter-edit-address' pk=recruiter_profile.pk %}">Edit Address</a></li>
                 {% endif %}
+                {% if not recruiter_profile.contacts %}
+                    <li><a href="{% url 'recruiter-create-contacts' pk=recruiter_profile.pk %}">Add Contacts</a></li>
+                {% else %}
+                    <li><a href="{% url 'recruiter-edit-contacts' pk=recruiter_profile.pk %}">Edit Contacts</a></li>
+                {% endif %}
                 <li><a href="{% url 'change-password-page' %}">Change Password</a></li>
                 <li><a href="{% url 'delete-page' %}">Delete Account</a></li>
             </ul>
