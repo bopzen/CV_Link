@@ -74,7 +74,11 @@
         <div class="profile-edit">
             <ul role="list">
                 <li><a href="{% url 'recruiter-edit-profile' %}">Edit Profile</a></li>
-                <li><a href="{% url 'recruiter-edit-address' %}">Edit Address</a></li>
+                {% if not recruiter_profile.address %}
+                    <li><a href="{% url 'recruiter-create-address' pk=recruiter_profile.pk %}">Add Address</a></li>
+                {% else %}
+                    <li><a href="{% url 'recruiter-edit-address' pk=recruiter_profile.pk %}">Edit Address</a></li>
+                {% endif %}
                 <li><a href="{% url 'change-password-page' %}">Change Password</a></li>
                 <li><a href="{% url 'delete-page' %}">Delete Account</a></li>
             </ul>

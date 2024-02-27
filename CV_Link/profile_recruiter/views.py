@@ -26,6 +26,24 @@ class RecruiterEditView(auth_mixins.LoginRequiredMixin, generic.UpdateView):
         return reverse_lazy('recruiter-dashboard')
 
 
+class RecruiterAddressCreateView(auth_mixins.LoginRequiredMixin, generic.CreateView):
+    model = Address
+    template_name = 'recruiter-address-create.html'
+    fields = ['address_line1', 'address_line2', 'city', 'postal_code', 'country']
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['recruiter'] = RecruiterProfile.objects.get(user=self.request.user)
+        return context
+
+    def get_success_url(self):
+        return reverse_lazy('recruiter-dashboard')
+
+    def form_valid(self, form):
+        form.instance.recruiter = RecruiterProfile.objects.get(user=self.request.user)
+        return super().form_valid(form)
+
+
 class RecruiterAddressEditView(auth_mixins.LoginRequiredMixin, generic.UpdateView):
     model = Address
     template_name = 'recruiter-address-edit.html'
@@ -33,8 +51,12 @@ class RecruiterAddressEditView(auth_mixins.LoginRequiredMixin, generic.UpdateVie
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['recruiter'] = self.object.recruiter
+        context['recruiter'] = RecruiterProfile.objects.get(user=self.request.user)
         return context
+
+    def get_object(self, queryset=None):
+        return RecruiterProfile.objects.get(user=self.request.user).address
 
     def get_success_url(self):
         return reverse_lazy('recruiter-dashboard')
+
