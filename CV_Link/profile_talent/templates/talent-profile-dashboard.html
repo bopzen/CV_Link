@@ -53,9 +53,42 @@
 
         </div>
 
+        <div class="education-info">
+            <h3>Education</h3>
+            {% if talent_profile.education_set.count == 0 %}
+                <p><a href="{% url 'talent-create-education' pk=talent_profile.pk %}" >Please add your education</a></p>
+            {% else %}
+                {% for education in talent_profile.education_set.all %}
+                    <h4>Institution</h4>
+                    <p>{{ education.institution }}</p>
+                    <h4>Degree</h4>
+                    <p>{{ education.degree }}</p>
+                    <h4>Field of Study</h4>
+                    <p>{{ education.field_of_study }}</p>
+                    <h4>City</h4>
+                    <p>{{ education.city }}</p>
+                    <h4>Country</h4>
+                    <p>{{ education.country }}</p>
+                    <h4>Description</h4>
+                    <p>{{ education.description }}</p>
+                    <h4>From</h4>
+                    <p>{{ education.start_date }}</p>
+                    <h4>To</h4>
+                    {% if education.end_date %}
+                        <p>{{ education.end_date }}</p>
+                    {% else %}
+                        <p>Present</p>
+                    {% endif %}
+
+                {% endfor %}
+
+            {% endif %}
+        </div>
+
         <div class="profile-edit">
             <ul role="list">
                 <li><a href="{% url 'talent-edit-profile' %}">Edit Profile</a></li>
+                <li><a href="{% url 'talent-create-education' pk=talent_profile.pk %}" >Add Education</a></li>
                 <li><a href="{% url 'change-password-page' %}">Change Password</a></li>
                 <li><a href="{% url 'delete-page' %}">Delete Account</a></li>
             </ul>

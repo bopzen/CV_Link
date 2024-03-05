@@ -44,8 +44,22 @@ class Education(models.Model):
     class Meta:
         verbose_name_plural = 'Education'
 
+    DEGREES = (
+        ('High School', 'High School'),
+        ('College', 'College'),
+        ('Bachelor', 'Bachelor'),
+        ('Master', 'Master'),
+        ('Doctor', 'Doctor'),
+        ('Professor', 'Professor'),
+        ('Certificate', 'Certificate')
+    )
+
     institution = models.CharField(
         max_length=200,
+    )
+    degree = models.CharField(
+        max_length=15,
+        choices=DEGREES,
     )
     field_of_study = models.CharField(
         max_length=200,
@@ -60,7 +74,10 @@ class Education(models.Model):
         max_length=300,
     )
     start_date = models.DateField()
-    end_date = models.DateField()
+    end_date = models.DateField(
+        null=True,
+        blank=True,
+    )
 
     talent = models.ForeignKey(
         TalentProfile,
