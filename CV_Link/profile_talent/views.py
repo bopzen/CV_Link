@@ -42,3 +42,21 @@ class TalentEducationCreateView(auth_mixins.LoginRequiredMixin, generic.CreateVi
     def form_valid(self, form):
         form.instance.talent = TalentProfile.objects.get(user=self.request.user)
         return super().form_valid(form)
+
+
+class TalentEducationEditView(auth_mixins.LoginRequiredMixin, generic.UpdateView):
+    model = Education
+    template_name = 'talent-education-edit.html'
+    fields = ['institution', 'degree', 'field_of_study', 'city', 'country', 'description', 'start_date', 'end_date']
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['talent'] = TalentProfile.objects.get(user=self.request.user)
+        return context
+
+    def get_success_url(self):
+        return reverse_lazy('talent-dashboard')
+
+    def form_valid(self, form):
+        form.instance.talent = TalentProfile.objects.get(user=self.request.user)
+        return super().form_valid(form)
