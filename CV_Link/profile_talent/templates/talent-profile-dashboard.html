@@ -81,6 +81,7 @@
                             <p>Present</p>
                         {% endif %}
                         <a href="{% url 'talent-edit-education' pk=education.pk %}">Edit</a>
+                        <a href="{% url 'talent-delete-education' pk=education.pk %}">Delete</a>
                     </div>
                 {% endfor %}
             {% endif %}
