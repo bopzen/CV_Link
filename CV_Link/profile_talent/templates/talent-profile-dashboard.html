@@ -55,10 +55,11 @@
 
         <div class="education-info">
             <h3>Education</h3>
-            {% if talent_profile.education_set.count == 0 %}
+            <p><a href="{% url 'talent-create-education' pk=talent_profile.pk %}" >Add education</a></p>
+            {% if educations.count == 0 %}
                 <p><a href="{% url 'talent-create-education' pk=talent_profile.pk %}" >Please add your education</a></p>
             {% else %}
-                {% for education in talent_profile.education_set.all %}
+                {% for education in educations %}
                     <div class="education-card">
                         <h4>Institution</h4>
                         <p>{{ education.institution }}</p>
@@ -87,10 +88,45 @@
             {% endif %}
         </div>
 
+        <div class="work-experience-info">
+            <h3>Work Experience</h3>
+            <p><a href="{% url 'talent-create-work-experience' pk=talent_profile.pk %}" >Add work experience</a></p>
+            {% if work_experiences.count == 0 %}
+                <p><a href="{% url 'talent-create-work-experience' pk=talent_profile.pk %}" >Please add your work experience</a></p>
+            {% else %}
+                {% for work_experience in work_experiences %}
+                     <div class="work-experience-card">
+                        <h4>Company</h4>
+                        <p>{{ work_experience.company }}</p>
+                        <h4>Sector</h4>
+                        <p>{{ work_experience.sector }}</p>
+                        <h4>Position</h4>
+                        <p>{{ work_experience.position }}</p>
+                        <h4>City</h4>
+                        <p>{{ work_experience.city }}</p>
+                        <h4>Country</h4>
+                        <p>{{ work_experience.country }}</p>
+                        <h4>Description</h4>
+                        <p>{{ work_experience.description }}</p>
+                        <h4>From</h4>
+                        <p>{{ work_experience.start_date }}</p>
+                        <h4>To</h4>
+                        {% if work_experience.end_date %}
+                            <p>{{ work_experience.end_date }}</p>
+                        {% else %}
+                            <p>Present</p>
+                        {% endif %}
+                        <a href="{% url 'talent-edit-work-experience' pk=work_experience.pk %}">Edit</a>
+                        <a href="{% url 'talent-delete-work-experience' pk=work_experience.pk %}">Delete</a>
+                    </div>
+                {% endfor %}
+
+            {% endif %}
+        </div>
+
         <div class="profile-edit">
             <ul role="list">
                 <li><a href="{% url 'talent-edit-profile' %}">Edit Profile</a></li>
-                <li><a href="{% url 'talent-create-education' pk=talent_profile.pk %}" >Add Education</a></li>
                 <li><a href="{% url 'change-password-page' %}">Change Password</a></li>
                 <li><a href="{% url 'delete-page' %}">Delete Account</a></li>
             </ul>

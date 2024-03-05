@@ -108,7 +108,10 @@ class WorkExperience(models.Model):
         max_length=300,
     )
     start_date = models.DateField()
-    end_date = models.DateField()
+    end_date = models.DateField(
+        null=True,
+        blank=True,
+    )
 
     talent = models.ForeignKey(
         TalentProfile,

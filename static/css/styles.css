@@ -112,7 +112,7 @@ a:hover {
     justify-content: space-between;
 }
 
-.education-card {
+.education-card, .work-experience-card {
     border: 1px solid rgb(25,44,79);
     border-radius: 6px;
     background: white;

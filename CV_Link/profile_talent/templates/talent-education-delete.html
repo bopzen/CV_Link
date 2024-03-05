@@ -7,9 +7,31 @@
 
 {% block content %}
 
-    <h1>Add Education</h1>
+    <h1>Delete Education</h1>
     <h2>{{ request.user }}</h2>
-     <form action="{% url 'talent-delete-education' pk=object.pk %}" method="post">
+    <div class="education-card">
+        <h4>Institution</h4>
+        <p>{{ object.institution }}</p>
+        <h4>Degree</h4>
+        <p>{{ object.degree }}</p>
+        <h4>Field of Study</h4>
+        <p>{{ object.field_of_study }}</p>
+        <h4>City</h4>
+        <p>{{ object.city }}</p>
+        <h4>Country</h4>
+        <p>{{ object.country }}</p>
+        <h4>Description</h4>
+        <p>{{ object.description }}</p>
+        <h4>From</h4>
+        <p>{{ object.start_date }}</p>
+        <h4>To</h4>
+        {% if object.end_date %}
+            <p>{{ object.end_date }}</p>
+        {% else %}
+            <p>Present</p>
+        {% endif %}
+    </div>
+    <form action="{% url 'talent-delete-education' pk=object.pk %}" method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <div class="form-buttons">
