@@ -124,6 +124,21 @@
             {% endif %}
         </div>
 
+
+        <div class="tech-stack-info">
+            <h3>Tech Stack</h3>
+            {% if not talent_profile.techstack.technologies %}
+                <p><a href="{% url 'talent-create-tech-stack' %}" >Please add your tech stack</a></p>
+            {% else %}
+                 <div class="tech-stack-card">
+                    <p>Tech stack: {{ talent_profile.techstack.technologies }}</p>
+                    <a href="{% url 'talent-edit-tech-stack' pk=talent_profile.techstack.id %}">Edit</a>
+                    <a href="{% url 'talent-delete-tech-stack' pk=talent_profile.techstack.id %}">Delete</a>
+                </div>
+
+            {% endif %}
+        </div>
+
         <div class="profile-edit">
             <ul role="list">
                 <li><a href="{% url 'talent-edit-profile' %}">Edit Profile</a></li>

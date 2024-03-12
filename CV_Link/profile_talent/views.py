@@ -2,7 +2,7 @@ from django.urls import reverse_lazy
 from django.views import generic
 from django.contrib.auth import mixins as auth_mixins
 
-from CV_Link.profile_talent.models import TalentProfile, Education, WorkExperience
+from CV_Link.profile_talent.models import TalentProfile, Education, WorkExperience, TechStack
 
 
 class TalentDashboardView(auth_mixins.LoginRequiredMixin, generic.DetailView):
@@ -120,6 +120,55 @@ class TalentWorkExperienceEditView(auth_mixins.LoginRequiredMixin, generic.Updat
 class TalentWorkExperienceDeleteView(auth_mixins.LoginRequiredMixin, generic.DeleteView):
     model = WorkExperience
     template_name = 'talent-work-experience-delete.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['talent'] = TalentProfile.objects.get(user=self.request.user)
+        return context
+
+    def get_success_url(self):
+        return reverse_lazy('talent-dashboard')
+
+
+class TalentTechStackCreateView(auth_mixins.LoginRequiredMixin, generic.CreateView):
+    model = TechStack
+    template_name = 'talent-tech-stack-create.html'
+    fields = ['technologies']
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['talent'] = TalentProfile.objects.get(user=self.request.user)
+        return context
+
+    def get_success_url(self):
+        return reverse_lazy('talent-dashboard')
+
+    def form_valid(self, form):
+        form.instance.talent = TalentProfile.objects.get(user=self.request.user)
+        return super().form_valid(form)
+
+
+class TalentTechStackEditView(auth_mixins.LoginRequiredMixin, generic.UpdateView):
+    model = TechStack
+    template_name = 'talent-tech-stack-edit.html'
+    fields = ['technologies']
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['talent'] = TalentProfile.objects.get(user=self.request.user)
+        return context
+
+    def get_success_url(self):
+        return reverse_lazy('talent-dashboard')
+
+    def form_valid(self, form):
+        form.instance.talent = TalentProfile.objects.get(user=self.request.user)
+        return super().form_valid(form)
+
+
+class TalentTechStackDeleteView(auth_mixins.LoginRequiredMixin, generic.DeleteView):
+    model = TechStack
+    template_name = 'talent-tech-stack-delete.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

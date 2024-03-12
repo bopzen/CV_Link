@@ -11,25 +11,25 @@
     <h2>{{ request.user }}</h2>
     <div class="work-experience-card">
         <h4>Company</h4>
-            <p>{{ object.company }}</p>
-            <h4>Sector</h4>
-            <p>{{ object.sector }}</p>
-            <h4>Position</h4>
-            <p>{{ object.position }}</p>
-            <h4>City</h4>
-            <p>{{ object.city }}</p>
-            <h4>Country</h4>
-            <p>{{ object.country }}</p>
-            <h4>Description</h4>
-            <p>{{ object.description }}</p>
-            <h4>From</h4>
-            <p>{{ object.start_date }}</p>
-            <h4>To</h4>
-            {% if object.end_date %}
-                <p>{{ object.end_date }}</p>
-            {% else %}
-                <p>Present</p>
-            {% endif %}
+        <p>{{ object.company }}</p>
+        <h4>Sector</h4>
+        <p>{{ object.sector }}</p>
+        <h4>Position</h4>
+        <p>{{ object.position }}</p>
+        <h4>City</h4>
+        <p>{{ object.city }}</p>
+        <h4>Country</h4>
+        <p>{{ object.country }}</p>
+        <h4>Description</h4>
+        <p>{{ object.description }}</p>
+        <h4>From</h4>
+        <p>{{ object.start_date }}</p>
+        <h4>To</h4>
+        {% if object.end_date %}
+            <p>{{ object.end_date }}</p>
+        {% else %}
+            <p>Present</p>
+        {% endif %}
     </div>
     <form action="{% url 'talent-delete-work-experience' pk=object.pk %}" method="post">
         {% csrf_token %}

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    CV Link Edit Tech Stack Page
+{% endblock %}
+
+{% block content %}
+
+    <h1>Edit Tech Stack</h1>
+    <h2>{{ request.user }}</h2>
+     <form action="{% url 'talent-edit-tech-stack' pk=object.pk %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="form-buttons">
+            <button>Edit Tech Stack</button>
+            <button type="button"><a href="{% url 'talent-dashboard' %}">Cancel</a></button>
+        </div>
+    </form>
+{% endblock %}

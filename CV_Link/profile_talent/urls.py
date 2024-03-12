@@ -2,7 +2,7 @@ from django.urls import path
 
 from CV_Link.profile_talent.views import TalentDashboardView, TalentEditView, TalentEducationCreateView, \
     TalentEducationEditView, TalentEducationDeleteView, TalentWorkExperienceCreateView, TalentWorkExperienceEditView, \
-    TalentWorkExperienceDeleteView
+    TalentWorkExperienceDeleteView, TalentTechStackCreateView, TalentTechStackEditView, TalentTechStackDeleteView
 
 urlpatterns = [
     path('dashboard/', TalentDashboardView.as_view(), name='talent-dashboard'),
@@ -13,4 +13,7 @@ urlpatterns = [
     path('add-work-experience/<int:pk>/', TalentWorkExperienceCreateView.as_view(), name='talent-create-work-experience'),
     path('edit-work-experience/<int:pk>/', TalentWorkExperienceEditView.as_view(), name='talent-edit-work-experience'),
     path('delete-work-experience/<int:pk>/', TalentWorkExperienceDeleteView.as_view(), name='talent-delete-work-experience'),
+    path('add-tech-stack/', TalentTechStackCreateView.as_view(), name='talent-create-tech-stack'),
+    path('edit-tech-stack/<int:pk>/', TalentTechStackEditView.as_view(), name='talent-edit-tech-stack'),
+    path('delete-tech-stack/<int:pk>/', TalentTechStackDeleteView.as_view(), name='talent-delete-tech-stack'),
 ]

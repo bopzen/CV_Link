@@ -117,3 +117,17 @@ class WorkExperience(models.Model):
         TalentProfile,
         on_delete=models.CASCADE,
     )
+
+
+class TechStack(models.Model):
+    class Meta:
+        verbose_name_plural = 'Tech Stack'
+
+    technologies = models.TextField(
+        max_length=300,
+    )
+
+    talent = models.OneToOneField(
+        TalentProfile,
+        on_delete=models.CASCADE,
+    )

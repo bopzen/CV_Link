@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    CV Link Delete Tech Stack Page
+{% endblock %}
+
+{% block content %}
+
+    <h1>Delete Tech Stack</h1>
+    <h2>{{ request.user }}</h2>
+    <div class="tech-stack-card">
+        <h4>Tech Stack</h4>
+        <p>{{ object.technologies }}</p>
+    </div>
+     <form action="{% url 'talent-delete-tech-stack' pk=object.pk %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="form-buttons">
+            <button>Delete Tech Stack</button>
+            <button type="button"><a href="{% url 'talent-dashboard' %}">Cancel</a></button>
+        </div>
+    </form>
+{% endblock %}
