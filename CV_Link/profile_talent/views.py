@@ -2,7 +2,7 @@ from django.urls import reverse_lazy
 from django.views import generic
 from django.contrib.auth import mixins as auth_mixins
 
-from CV_Link.profile_talent.models import TalentProfile, Education, WorkExperience, TechStack
+from CV_Link.profile_talent.models import TalentProfile, Education, WorkExperience, TechStack, Contacts
 
 
 class TalentDashboardView(auth_mixins.LoginRequiredMixin, generic.DetailView):
@@ -177,3 +177,39 @@ class TalentTechStackDeleteView(auth_mixins.LoginRequiredMixin, generic.DeleteVi
 
     def get_success_url(self):
         return reverse_lazy('talent-dashboard')
+
+
+class TalentContactsCreateView(auth_mixins.LoginRequiredMixin, generic.CreateView):
+    model = Contacts
+    template_name = 'talent-contacts-create.html'
+    fields = ['phone', 'website', 'github_profile', 'linkedin_profile', 'facebook_profile', 'instagram_profile', 'twitter_profile']
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['talent'] = TalentProfile.objects.get(user=self.request.user)
+        return context
+
+    def get_success_url(self):
+        return reverse_lazy('talent-dashboard')
+
+    def form_valid(self, form):
+        form.instance.talent = TalentProfile.objects.get(user=self.request.user)
+        return super().form_valid(form)
+
+
+class TalentContactsEditView(auth_mixins.LoginRequiredMixin, generic.UpdateView):
+    model = Contacts
+    template_name = 'talent-contacts-edit.html'
+    fields = ['phone', 'website', 'github_profile', 'linkedin_profile', 'facebook_profile', 'instagram_profile', 'twitter_profile']
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['talent'] = TalentProfile.objects.get(user=self.request.user)
+        return context
+
+    def get_success_url(self):
+        return reverse_lazy('talent-dashboard')
+
+    def form_valid(self, form):
+        form.instance.talent = TalentProfile.objects.get(user=self.request.user)
+        return super().form_valid(form)

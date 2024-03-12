@@ -1,0 +1,20 @@
+<!DOCTYPE html>{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    CV Link Add Contacts Page
+{% endblock %}
+
+{% block content %}
+
+    <h1>Add Contacts</h1>
+    <h2>{{ request.user }}</h2>
+     <form action="{% url 'talent-create-contacts' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="form-buttons">
+            <button>Add Contacts</button>
+            <button type="button"><a href="{% url 'talent-dashboard' %}">Cancel</a></button>
+        </div>
+    </form>
+{% endblock %}

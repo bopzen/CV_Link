@@ -51,6 +51,19 @@
             <h4>Email</h4>
             <p>{{ request.user.email }}</p>
 
+            <h4>Phone</h4>
+            <p>{{ talent_profile.contacts.phone }}</p>
+            <h4>Website</h4>
+            <p>{{ talent_profile.contacts.website }}</p>
+            <h4>GitHub</h4>
+            <p>{{ talent_profile.contacts.github_profile }}</p>
+            <h4>Social Media</h4>
+            <p>{{ recruiter_profile.contacts.linkedin_profile }}</p>
+            <p>{{ recruiter_profile.contacts.facebook_profile }}</p>
+            <p>{{ recruiter_profile.contacts.linkedin_profile }}</p>
+            <p>{{ recruiter_profile.contacts.instagram_profile }}</p>
+            <p>{{ recruiter_profile.contacts.twitter_profile }}</p>
+
         </div>
 
         <div class="education-info">
@@ -142,6 +155,11 @@
         <div class="profile-edit">
             <ul role="list">
                 <li><a href="{% url 'talent-edit-profile' %}">Edit Profile</a></li>
+                {% if not talent_profile.contacts %}
+                    <li><a href="{% url 'talent-create-contacts' %}">Add Contacts</a></li>
+                {% else %}
+                    <li><a href="{% url 'talent-edit-contacts' pk=talent_profile.contacts.id %}">Edit Contacts</a></li>
+                {% endif %}
                 <li><a href="{% url 'change-password-page' %}">Change Password</a></li>
                 <li><a href="{% url 'delete-page' %}">Delete Account</a></li>
             </ul>

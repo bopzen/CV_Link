@@ -40,6 +40,45 @@ class TalentProfile(models.Model):
         return f'{self.first_name} {self.last_name}'
 
 
+class Contacts(models.Model):
+    class Meta:
+        verbose_name_plural = 'Contacts'
+
+    phone = models.CharField(
+        max_length=12,
+        null=True,
+        blank=True,
+    )
+    website = models.URLField(
+        null=True,
+        blank=True,
+    )
+    github_profile = models.URLField(
+        null=True,
+        blank=True,
+    )
+    linkedin_profile = models.URLField(
+        null=True,
+        blank=True,
+    )
+    facebook_profile = models.URLField(
+        null=True,
+        blank=True,
+    )
+    instagram_profile = models.URLField(
+        null=True,
+        blank=True,
+    )
+    twitter_profile = models.URLField(
+        null=True,
+        blank=True,
+    )
+    talent = models.OneToOneField(
+        TalentProfile,
+        on_delete=models.CASCADE,
+    )
+
+
 class Education(models.Model):
     class Meta:
         verbose_name_plural = 'Education'
