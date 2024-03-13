@@ -23,7 +23,7 @@ class TalentDashboardView(auth_mixins.LoginRequiredMixin, generic.DetailView):
 class TalentEditView(auth_mixins.LoginRequiredMixin, generic.UpdateView):
     model = TalentProfile
     template_name = 'talent-profile-edit.html'
-    fields = ['first_name', 'last_name', 'birth_date', 'city', 'introduction']
+    fields = ['first_name', 'last_name', 'birth_date', 'city', 'introduction', 'profile_picture']
 
     def get_object(self, queryset=None):
         return TalentProfile.objects.get(user_id=self.request.user)

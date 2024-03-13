@@ -30,6 +30,12 @@ class TalentProfile(models.Model):
         null=True,
         blank=True,
     )
+    profile_picture = models.ImageField(
+        upload_to='talent_pictures',
+        null=True,
+        blank=True,
+    )
+
     user = models.OneToOneField(
         UserModel,
         on_delete=models.CASCADE,

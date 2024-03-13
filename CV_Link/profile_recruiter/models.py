@@ -17,6 +17,11 @@ class RecruiterProfile(models.Model):
         blank=True,
     )
     company_website = models.URLField()
+    profile_picture = models.ImageField(
+        upload_to='recruiter_pictures',
+        null=True,
+        blank=True,
+    )
     user = models.OneToOneField(
         UserModel,
         on_delete=models.CASCADE,

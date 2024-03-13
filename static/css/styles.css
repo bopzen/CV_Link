@@ -121,3 +121,10 @@ a:hover {
     font-size: 0.9rem;
 }
 
+.profile-picture {
+    width: 128px;
+}
+.profile-picture img {
+    width: 100%;
+}
+
